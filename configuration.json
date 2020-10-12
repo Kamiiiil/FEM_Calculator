@@ -1,0 +1,14 @@
+{
+    "initialTemperature": 100,
+    "simulationTime": 500,
+    "simulationStepTime": 50,
+    "ambientTemperature": 1200,
+    "alfa": 300,
+    "H": 0.2,
+    "W": 0.1,
+    "nH": 5,
+    "nW": 4,
+    "specificHeat": 700,
+    "conductivity": 25,
+    "density": 7800    
+}
