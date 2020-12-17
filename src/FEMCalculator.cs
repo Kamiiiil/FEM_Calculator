@@ -12,11 +12,13 @@ namespace FEM
             Configuration config = getConfiguration();
             GridManager grid = new GridManager(config);
             JacobiTransformationManager jacobiTransformation = new JacobiTransformationManager();
-            for(int i = 0; i<4; i++)
+            HMatrixManager hMatrix = new HMatrixManager(jacobiTransformation, config);
+
+            for(int i = 0; i < 4; i++)
             {
-                for(int j = 0; j<4; j++)
+                for(int j = 0; j < 4; j++)
                 {
-                    Console.Write(jacobiTransformation.DNDYValues[i,j]+ " ");
+                    Console.Write(hMatrix.HMatrix[i,j] + " ");
                 }
                 Console.WriteLine("");
             }
