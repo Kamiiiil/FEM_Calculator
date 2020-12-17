@@ -11,15 +11,15 @@ namespace FEM
         {
             Configuration config = getConfiguration();
             GridManager grid = new GridManager(config);
-            UniversalElement universalElement = new UniversalElement();
-            // for(int i = 0; i<4; i++)
-            // {
-            //     for(int j = 0; j<4; j++)
-            //     {
-            //         Console.Write(universalElement.DNDEtaValuesMatrix[i,j]+ " ");
-            //     }
-            //     Console.WriteLine("");
-            // }
+            JacobiTransformationManager jacobiTransformation = new JacobiTransformationManager();
+            for(int i = 0; i<4; i++)
+            {
+                for(int j = 0; j<4; j++)
+                {
+                    Console.Write(jacobiTransformation.DNDYValues[i,j]+ " ");
+                }
+                Console.WriteLine("");
+            }
         }
         private Configuration getConfiguration()
         {
