@@ -23,7 +23,7 @@ namespace FEM
             {
                 for (int j = 0; j < config.nH; j ++) 
                 {
-                    nodesGrid.Add(new Node(i*Lx, j*Ly, 100, setBC(i*Lx,j*Ly, config)));
+                    nodesGrid.Add(new Node(i*Lx, j*Ly, config.initialTemperature, setBC(i*Lx,j*Ly, config)));
                 }
             }
             for (int i = 0; i < nodesGrid.Count; i++) 

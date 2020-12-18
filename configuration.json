@@ -4,11 +4,11 @@
     "simulationStepTime": 50,
     "ambientTemperature": 1200,
     "alfa": 300,
-    "H": 0.2,
+    "H": 0.1,
     "W": 0.1,
-    "nH": 5,
+    "nH": 4,
     "nW": 4,
     "specificHeat": 700,
-    "conductivity": 30,
+    "conductivity": 25,
     "density": 7800    
 }
