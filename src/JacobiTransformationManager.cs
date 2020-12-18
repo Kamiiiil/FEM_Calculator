@@ -12,10 +12,10 @@ namespace FEM
         public double[] Determinant {get; set;}
         public double[,] DNDXValues {get; set;}
         public double[,] DNDYValues {get; set;}
-        public JacobiTransformationManager()
+        public JacobiTransformationManager(Configuration config)
         {
-            XValues = new double[4]{0, 0.025, 0.025 , 0};
-            YValues = new double[4]{0, 0, 0.025 , 0.025};
+            XValues = new double[4]{0, config.W/(config.nW-1), config.W/(config.nW-1) , 0};
+            YValues = new double[4]{0, 0, config.H/(config.nH-1) , config.H/(config.nH-1)};
             DXDEtaValues = new double[4];
             DXDKsiValues = new double[4];
             DYDEtaValues = new double[4];

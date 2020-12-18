@@ -11,16 +11,17 @@ namespace FEM
         {
             Configuration config = getConfiguration();
             GridManager grid = new GridManager(config);
-            JacobiTransformationManager jacobiTransformation = new JacobiTransformationManager();
-            HMatrixManager hMatrix = new HMatrixManager(jacobiTransformation, config);
-            CMatrixManager cMatrix = new CMatrixManager(jacobiTransformation, config);
-            MatrixAgregator global = new MatrixAgregator(hMatrix,cMatrix, grid, config);
+            JacobiTransformationManager jacobi = new JacobiTransformationManager(config);
+            HMatrixManager hMatrix = new HMatrixManager(jacobi, config);
+            CMatrixManager cMatrix = new CMatrixManager(jacobi, config);
+            HbcMatrixManager hbcMatrix = new HbcMatrixManager(jacobi, config);
+            MatrixAgregator global = new MatrixAgregator(hMatrix,cMatrix, grid, config, hbcMatrix);
 
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i < 16; i++)
             {
-                for(int j = 0; j < 4; j++)
+                for(int j = 0; j < 16; j++)
                 {
-                    Console.Write(cMatrix.CMatrix[i,j]+ "  ");
+                    Console.Write(global.HGlobalMatrix[i,j]+ "     ");
                 }
                 Console.WriteLine("");
             }
