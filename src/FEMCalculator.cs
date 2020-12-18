@@ -15,15 +15,17 @@ namespace FEM
             HMatrixManager hMatrix = new HMatrixManager(jacobi, config);
             CMatrixManager cMatrix = new CMatrixManager(jacobi, config);
             HbcMatrixManager hbcMatrix = new HbcMatrixManager(jacobi, config);
-            MatrixAgregator global = new MatrixAgregator(hMatrix,cMatrix, grid, config, hbcMatrix);
+            VectorPManager vectorP = new VectorPManager(config);
+            MatrixAgregator global = new MatrixAgregator(hMatrix,cMatrix, grid, config, hbcMatrix, vectorP);
 
             for(int i = 0; i < 16; i++)
             {
-                for(int j = 0; j < 16; j++)
-                {
-                    Console.Write(global.HGlobalMatrix[i,j]+ "     ");
-                }
-                Console.WriteLine("");
+                Console.Write(global.GlobalPVector[i]+ "  ");
+                // for(int j = 0; j < 16; j++)
+                // {
+                //     Console.Write(global.HGlobalMatrix[i,j]+ "     ");
+                // }
+                // Console.WriteLine("");
             }
         }
         private Configuration getConfiguration()

@@ -42,7 +42,7 @@ namespace FEM
         }     
         private void CalculateHbcMatrix(JacobiTransformationManager jacobi, Configuration config)
         {
-             for(int i = 0; i < 4; i++)
+            for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
                 {

@@ -5,6 +5,7 @@ namespace FEM
         public double initialTemperature { get; set; }
         public double simulationTime { get; set; }
         public double simulationStepTime { get; set; }
+        public double ambientTemperature {get; set;}
         public double alfa { get; set; }
         public double H { get; set; }
         public double W { get; set; }
