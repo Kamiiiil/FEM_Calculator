@@ -13,12 +13,13 @@ namespace FEM
             GridManager grid = new GridManager(config);
             JacobiTransformationManager jacobiTransformation = new JacobiTransformationManager();
             HMatrixManager hMatrix = new HMatrixManager(jacobiTransformation, config);
+            CMatrixManager cMatrix = new CMatrixManager(jacobiTransformation, config);
 
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
                 {
-                    Console.Write(hMatrix.HMatrix[i,j] + " ");
+                    Console.Write(cMatrix.CMatrix[i,j]+ " ");
                 }
                 Console.WriteLine("");
             }
