@@ -16,7 +16,14 @@ namespace FEM
         {
             for(int i = 0; i < grid.elementsGrid.Count; i++)
             {
-                double[,] HMatrix=hMatrix.HMatrix;
+                double[,] HMatrix=new double[grid.nodesGrid.Count, grid.nodesGrid.Count];
+                for(int j = 0; j < 4; j++)
+                {
+                    for(int k = 0; k < 4; k++)
+                    {
+                        HMatrix[j,k] = hMatrix.HMatrix[j,k];
+                    }
+                }
                 if(grid.elementsGrid[i].nodes[3].boundaryCondition && grid.elementsGrid[i].nodes[0].boundaryCondition) 
                     HMatrix = AddMatrixes(HMatrix, hbcMatrix.Pow4HbcMatrix);
                 if(grid.elementsGrid[i].nodes[1].boundaryCondition && grid.elementsGrid[i].nodes[2].boundaryCondition)
@@ -31,7 +38,7 @@ namespace FEM
                     for(int k = 0; k < 4; k++)
                     {
                         HGlobalMatrix[grid.elementsGrid[i].nodes[j].Id, grid.elementsGrid[i].nodes[k].Id] += HMatrix[j,k];
-                        CGlobalMatrix[grid.elementsGrid[i].nodes[j].Id, grid.elementsGrid[i].nodes[k].Id] += HMatrix[j,k];
+                        CGlobalMatrix[grid.elementsGrid[i].nodes[j].Id, grid.elementsGrid[i].nodes[k].Id] += cMatrix.CMatrix[j,k];
                     }
                     if(grid.elementsGrid[i].nodes[0].boundaryCondition && grid.elementsGrid[i].nodes[1].boundaryCondition)
                         GlobalPVector[grid.elementsGrid[i].nodes[j].Id] += vectorP.Pow1PVector[j];

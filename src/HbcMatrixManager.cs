@@ -22,8 +22,8 @@ namespace FEM
             Pow3HbcMatrix = new double[4,4];
             Pow4HbcMatrix = new double[4,4];
 
-            XDeterminant = (config.W/(config.nW))/2;
-            YDeterminant = (config.H/(config.nH))/2;
+            XDeterminant = (config.W/(config.nW-1))/2;
+            YDeterminant = (config.H/(config.nH-1))/2;
 
             CalculateNMatrixes();
             CalculateHbcMatrix(jacobi, config);
@@ -46,10 +46,10 @@ namespace FEM
             {
                 for(int j = 0; j < 4; j++)
                 {
-                    Pow1HbcMatrix[i,j] = config.conductivity*XDeterminant*(Pow1NValues[0,i]*Pow1NValues[0,j] + Pow1NValues[1,i]*Pow1NValues[1,j]);
-                    Pow2HbcMatrix[i,j] = config.conductivity*YDeterminant*(Pow2NValues[0,i]*Pow2NValues[0,j] + Pow2NValues[1,i]*Pow2NValues[1,j]);
-                    Pow3HbcMatrix[i,j] = config.conductivity*XDeterminant*(Pow3NValues[0,i]*Pow3NValues[0,j] + Pow3NValues[1,i]*Pow3NValues[1,j]);
-                    Pow4HbcMatrix[i,j] = config.conductivity*YDeterminant*(Pow4NValues[0,i]*Pow4NValues[0,j] + Pow4NValues[1,i]*Pow4NValues[1,j]);
+                    Pow1HbcMatrix[i,j] = config.alfa*XDeterminant*(Pow1NValues[0,i]*Pow1NValues[0,j] + Pow1NValues[1,i]*Pow1NValues[1,j]);
+                    Pow2HbcMatrix[i,j] = config.alfa*YDeterminant*(Pow2NValues[0,i]*Pow2NValues[0,j] + Pow2NValues[1,i]*Pow2NValues[1,j]);
+                    Pow3HbcMatrix[i,j] = config.alfa*XDeterminant*(Pow3NValues[0,i]*Pow3NValues[0,j] + Pow3NValues[1,i]*Pow3NValues[1,j]);
+                    Pow4HbcMatrix[i,j] = config.alfa*YDeterminant*(Pow4NValues[0,i]*Pow4NValues[0,j] + Pow4NValues[1,i]*Pow4NValues[1,j]);
                 }
             }
         }
